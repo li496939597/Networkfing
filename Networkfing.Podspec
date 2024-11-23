@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/li496939597/Networkfing.git', :tag => 'v0.2.0' }
 
   s.ios.deployment_target = '13.0'
-  s.source_files     = 'Networkfing/Classes/**/*.{h,m,swift}'
-  s.public_header_files = 'Networkfing/Classes/**/*.h'
+  s.source_files     = 'Networkfing/**/*.{h,m,swift}'
+  s.public_header_files = 'Networkfing/**/*.h'
 
   s.frameworks       = 'Foundation', 'Network', 'UIKit'
 end
