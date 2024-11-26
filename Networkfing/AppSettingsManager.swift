@@ -14,29 +14,26 @@ import UIKit
     
     // 判断设备网络是否畅通，使用 Network.framework
     @objc public func isNetworkReachable() -> Bool {
-        //print("正在检查网络连接状态...")
+        print("正在检查网络连接状态...")
         
         let monitor = NWPathMonitor()
         let queue = DispatchQueue(label: "NetworkMonitorQueue")
-        let semaphore = DispatchSemaphore(value: 0)
         var isReachable = false
         
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 isReachable = true
-                //print("网络连接正常")
+                print("网络连接正常")
             } else {
                 isReachable = false
-                //print("网络连接不可用")
+                print("网络连接不可用")
             }
-            semaphore.signal()
-            monitor.cancel()
         }
         
         monitor.start(queue: queue)
         
         // 等待网络状态更新
-        semaphore.wait()
+        Thread.sleep(forTimeInterval: 1.0)
         
         return isReachable
     }
